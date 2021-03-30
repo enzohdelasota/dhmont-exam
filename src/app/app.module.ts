@@ -13,12 +13,14 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { StaticsComponent } from './statics/statics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
+    StaticsComponent,
     EditIncidenciaComponent,
     IncidenciasListComponent,
     ToolbarComponent,

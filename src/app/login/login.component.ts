@@ -19,7 +19,11 @@ export class LoginComponent implements OnInit {
   login() {
     let success = this.authService.login(this.email, this.password);
     if (success) {
-      this.router.navigate(['']);
+      if (this.authService.isAdmin()) {
+        this.router.navigate(['statics']);
+      } else {
+        this.router.navigate(['']);
+      }
     }
   }
 
