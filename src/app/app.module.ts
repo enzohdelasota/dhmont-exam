@@ -10,6 +10,7 @@ import { MyMatModule } from './mat.module';
 import { IncidenciasListComponent } from './incidencias-list/incidencias-list.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { LoginComponent } from './login/login.component';
     LoginComponent,
     EditIncidenciaComponent,
     IncidenciasListComponent,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
