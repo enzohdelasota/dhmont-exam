@@ -1,4 +1,4 @@
 <div class="home">
-  <app-edit-incidencia class="item"></app-edit-incidencia>
-  <app-incidencias-list class="item" [columns]="tableColumns"></app-incidencias-list>
+  <app-edit-incidencia class="item" *ngIf="isReporter()"></app-edit-incidencia>
+  <app-incidencias-list [class]="isReporter() ? 'item' : 'list'" [columns]="tableColumns"></app-incidencias-list>
 </div>

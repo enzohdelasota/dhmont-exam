@@ -15,8 +15,11 @@ export class HomeComponent implements OnInit {
     if (this.authService.isReporter()) {
       this.tableColumns = ['id', 'description', 'category', 'state'];
     } else {
-      this.tableColumns = ['id', 'description', 'category', 'user', 'state'];
+      this.tableColumns = ['id', 'description', 'category', 'user', 'stateChange'];
     }
   }
 
+  isReporter(): Boolean {
+    return this.authService.isReporter();
+  }
 }

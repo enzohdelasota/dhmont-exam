@@ -13,6 +13,10 @@ export class IncidenciaRepositoryService {
     this.localSourceData.saveIncidencia(incidencia);
   }
 
+  changeState(incidencia: Incidencia) {
+    this.localSourceData.changeState(incidencia);
+  }
+
   getAll(): Incidencia[] {
     let incidencias = this.localSourceData.loadIncidencias();
     return incidencias;

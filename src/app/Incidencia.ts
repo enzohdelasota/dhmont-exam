@@ -4,5 +4,5 @@ export interface Incidencia {
   categoriaId: number;
   photo_path: string;
   user: string;
-
+  state: string;
 }
