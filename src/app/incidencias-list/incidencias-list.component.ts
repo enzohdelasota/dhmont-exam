@@ -3,23 +3,16 @@ import { Categoria } from '../Categoria';
 import { CategoriaRepositoryService } from '../categoria-repository.service';
 import { Incidencia } from '../Incidencia';
 import { IncidenciaRepositoryService } from '../incidencia-repository.service';
-import { CATEGORIAS } from '../mock-categorias';
 
 @Component({
-  selector: 'app-edit-incidencia',
-  templateUrl: './edit-incidencia.component.html',
-  styleUrls: ['./edit-incidencia.component.scss']
+  selector: 'app-incidencias-list',
+  templateUrl: './incidencias-list.component.html',
+  styleUrls: ['./incidencias-list.component.scss']
 })
-export class EditIncidenciaComponent implements OnInit {
-  categorias?: Categoria[];
-
-  incidencia: Incidencia = {
-    id: 1,
-    description: '',
-    userId: 0,
-    photo_path: '',
-    categoriaId: 0
-  };
+export class IncidenciasListComponent implements OnInit {
+  incidencias: Incidencia[] = [];
+  categorias: Categoria[] = [];
+  displayedColumns = ['id', 'description', 'categoriaId'];
 
   constructor(
     private incidenciaRepository: IncidenciaRepositoryService,
@@ -28,11 +21,7 @@ export class EditIncidenciaComponent implements OnInit {
 
   ngOnInit(): void {
     this.categorias = this.categoriaRepository.getAll();
-    console.log(this.categorias);
-  }
-
-  save() {
-    this.incidenciaRepository.save(this.incidencia);
+    this.incidencias = this.incidenciaRepository.getAll();
   }
 
 }

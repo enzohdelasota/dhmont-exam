@@ -7,11 +7,13 @@ import { EditIncidenciaComponent } from './edit-incidencia/edit-incidencia.compo
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyMatModule } from './mat.module';
+import { IncidenciasListComponent } from './incidencias-list/incidencias-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditIncidenciaComponent,
+    IncidenciasListComponent,
   ],
   imports: [
     BrowserModule,

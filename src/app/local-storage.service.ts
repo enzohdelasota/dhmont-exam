@@ -16,4 +16,12 @@ export class LocalStorageService {
     incidencias.push(incidencia);
     localStorage.setItem('incidencias', JSON.stringify(incidencias));
   }
+
+  loadIncidencias(): Incidencia[] {
+    let incidencias: Incidencia[] = [];
+    if (localStorage.getItem('incidencias')) {
+      incidencias = JSON.parse(localStorage.getItem('incidencias')!!);
+    }
+    return incidencias;
+  }
 }

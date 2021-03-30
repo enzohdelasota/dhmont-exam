@@ -12,4 +12,9 @@ export class IncidenciaRepositoryService {
   save(incidencia: Incidencia) {
     this.localSourceData.saveIncidencia(incidencia);
   }
+
+  getAll(): Incidencia[] {
+    let incidencias = this.localSourceData.loadIncidencias();
+    return incidencias;
+  }
 }
