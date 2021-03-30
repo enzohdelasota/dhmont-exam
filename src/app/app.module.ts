@@ -7,10 +7,12 @@ import { EditIncidenciaComponent } from './edit-incidencia/edit-incidencia.compo
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyMatModule } from './mat.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { IncidenciasListComponent } from './incidencias-list/incidencias-list.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     EditIncidenciaComponent,
     IncidenciasListComponent,
     ToolbarComponent,
+    BarChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     FormsModule,
     BrowserAnimationsModule,
     MyMatModule,
+    NgxChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
