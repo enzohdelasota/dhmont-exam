@@ -1,0 +1,16 @@
+<app-toolbar ></app-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened class="sidenav">
+    <mat-list>
+      <mat-list-item>
+        <button mat-button [routerLink]="['/dashboard']" routerLinkActive="router-link-active">Agregar</button>
+      </mat-list-item>
+      <mat-list-item *ngIf="isAdmin()">
+        <button mat-button [routerLink]="['/dashboard/statics']" routerLinkActive="router-link-active" >Estadisticas</button>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

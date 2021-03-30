@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     let success = this.authService.login(this.email, this.password);
     if (success) {
       if (this.authService.isAdmin()) {
-        this.router.navigate(['statics']);
+        this.router.navigate(['dashboard/statics']);
       } else {
         this.router.navigate(['']);
       }
