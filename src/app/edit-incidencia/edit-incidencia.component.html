@@ -1,0 +1,16 @@
+<h4>Nueva incidencia</h4>
+<form class="form">
+  <mat-form-field class="form-item">
+    <mat-label>Descripción</mat-label>
+    <input matInput name="descripcion" placeholder="Descripción"  [(ngModel)]="incidencia.description">
+  </mat-form-field>
+  <mat-form-field class="form-item">
+    <mat-label>Categoria</mat-label>
+    <mat-select name="categoriaid" [(ngModel)]="incidencia.categoriaId">
+      <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+        {{categoria.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="save()">Guardar</button>
+</form>
