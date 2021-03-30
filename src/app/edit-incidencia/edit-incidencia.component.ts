@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Categoria } from '../Categoria';
 import { Incidencia } from '../Incidencia';
+import { IncidenciaRepositoryService } from '../incidencia-repository.service';
 import { CATEGORIAS } from '../mock-categorias';
 
 @Component({
@@ -19,7 +20,7 @@ export class EditIncidenciaComponent implements OnInit {
     categoriaId: 0
   };
 
-  constructor() { }
+  constructor(private incidenciaRepository: IncidenciaRepositoryService) { }
 
   ngOnInit(): void {
     this.categorias = CATEGORIAS;
@@ -27,8 +28,7 @@ export class EditIncidenciaComponent implements OnInit {
   }
 
   save() {
-    console.log(this.incidencia);
-    localStorage.setItem('incidencia', JSON.stringify(this.incidencia));
+    this.incidenciaRepository.save(this.incidencia);
   }
 
 }
