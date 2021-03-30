@@ -15,9 +15,10 @@ export class BarChartComponent implements OnInit {
   showXAxis = true;
   showYAxis = true;
   showXAxisLabel = true;
-  xAxisLabel = 'Categoria';
+  xAxisLabel = 'Categoría';
   showYAxisLabel = true;
   yAxisLabel = 'Incidencias';
+  view: [number, number] = [450, 300];
 
   colorScheme = {
     domain: ['#5AA454', '#C7B42C', '#A10A28']
@@ -40,13 +41,16 @@ export class BarChartComponent implements OnInit {
     this.incidencias = this.incidenciaRepository.getAll();
     let categorias = this.categoriaRepository.getAll();
     let count = this.incidencias.reduce<number[]>(
-      (prev, curr) => (prev[curr.categoriaId] = ++prev[curr.categoriaId] || 1,
-        prev), {} as number[]);
-    let data = [
-      { "name": categorias[0].name, "value": count[0] },
-      { "name": categorias[1].name, "value": count[1] },
-      { "name": categorias[2].name, "value": count[2] },
-    ];
+      (prev, curr) => (prev[curr.categoriaId] = ++prev[curr.categoriaId] || 1, prev),{} as number[]);
+
+    let cats = Object.keys(count);
+
+    let data = [];
+
+    for (let i = 0; i < cats.length; i++) {
+      data.push({ "name": categorias[+cats[i]].name , "value": count[+cats[i]] });
+    }
+
     Object.assign(this, { data });
   }
 
