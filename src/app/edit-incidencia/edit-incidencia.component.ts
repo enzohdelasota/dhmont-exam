@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { Categoria } from '../Categoria';
 import { CategoriaRepositoryService } from '../categoria-repository.service';
 import { Incidencia } from '../Incidencia';
 import { IncidenciaRepositoryService } from '../incidencia-repository.service';
-import { CATEGORIAS } from '../mock-categorias';
 
 @Component({
   selector: 'app-edit-incidencia',
@@ -16,7 +16,7 @@ export class EditIncidenciaComponent implements OnInit {
   incidencia: Incidencia = {
     id: 1,
     description: '',
-    userId: 0,
+    user: '',
     photo_path: '',
     categoriaId: 0
   };
@@ -24,11 +24,12 @@ export class EditIncidenciaComponent implements OnInit {
   constructor(
     private incidenciaRepository: IncidenciaRepositoryService,
     private categoriaRepository: CategoriaRepositoryService,
+    private authService: AuthService,
     ) { }
 
   ngOnInit(): void {
     this.categorias = this.categoriaRepository.getAll();
-    console.log(this.categorias);
+    this.incidencia.user = this.authService.userName;
   }
 
   save() {

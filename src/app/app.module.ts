@@ -8,10 +8,14 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyMatModule } from './mat.module';
 import { IncidenciasListComponent } from './incidencias-list/incidencias-list.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    LoginComponent,
     EditIncidenciaComponent,
     IncidenciasListComponent,
   ],

@@ -1,0 +1,11 @@
+<form>
+  <mat-form-field>
+    <mat-label>Usuario</mat-label>
+    <input matInput name="email" placeholder="Email" type="email" [(ngModel)]="email">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput name="password" placeholder="Password" type="password" [(ngModel)]="password">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
+</form>

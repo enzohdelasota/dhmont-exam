@@ -3,6 +3,6 @@ export interface Incidencia {
   description: string;
   categoriaId: number;
   photo_path: string;
-  userId: number;
+  user: string;
 
 }

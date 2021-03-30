@@ -12,9 +12,13 @@
         <th mat-header-cell *matHeaderCellDef>Descripción</th>
         <td mat-cell *matCellDef="let incidencia">{{incidencia.description}}</td>
       </ng-container>
-      <ng-container matColumnDef="categoriaId">
+      <ng-container matColumnDef="categoria">
         <th mat-header-cell *matHeaderCellDef>Categoría</th>
         <td mat-cell *matCellDef="let incidencia">{{categorias[incidencia.categoriaId].name}}</td>
+      </ng-container>
+      <ng-container matColumnDef="user">
+        <th mat-header-cell *matHeaderCellDef>Añadido por</th>
+        <td mat-cell *matCellDef="let incidencia">{{incidencia.user}}</td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

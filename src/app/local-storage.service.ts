@@ -8,6 +8,22 @@ export class LocalStorageService {
 
   constructor() { }
 
+  saveUser(user: {}) {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  loadUser() {
+    let user = null;
+    if (localStorage.getItem('user')) {
+      user = JSON.parse(localStorage.getItem('user')!!);
+    }
+    return user;
+  }
+
+  removeUser() {
+    localStorage.removeItem('user');
+  }
+
   saveIncidencia(incidencia: Incidencia) {
     let incidencias: Incidencia[] = [];
     if (localStorage.getItem('incidencias')) {

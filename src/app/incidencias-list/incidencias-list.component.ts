@@ -12,7 +12,7 @@ import { IncidenciaRepositoryService } from '../incidencia-repository.service';
 export class IncidenciasListComponent implements OnInit {
   incidencias: Incidencia[] = [];
   categorias: Categoria[] = [];
-  displayedColumns = ['id', 'description', 'categoriaId'];
+  displayedColumns = ['id', 'description', 'categoria', 'user'];
 
   constructor(
     private incidenciaRepository: IncidenciaRepositoryService,
