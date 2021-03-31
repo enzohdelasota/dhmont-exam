@@ -1,19 +1,23 @@
-<form class="login">
-  <h2 class="mat-h1">Iniciar Sesión</h2>
-  <mat-form-field>
-    <mat-label >Usuario</mat-label>
-    <input matInput #focus name="email" placeholder="Email" type="email" [(ngModel)]="email">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Password</mat-label>
-    <input matInput name="password" placeholder="Password" type="password" [(ngModel)]="password">
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
-</form>
-<div class="footer">
-  <div *ngIf="failure" class="alert alert-danger">Email o Password incorrectos!</div>
-  <div *ngIf="isLoading | async">
-    <mat-progress-spinner color="primary" mode="indeterminate" [value]="0" [diameter]="40">
-    </mat-progress-spinner>
+<div class="login-container">
+  <form class="login">
+    <h2 class="mat-h1">Iniciar Sesión</h2>
+    <mat-form-field>
+      <mat-label >Usuario</mat-label>
+      <input matInput #focus name="email" placeholder="Email" type="email" [(ngModel)]="email">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput name="password" placeholder="Password" type="password" [(ngModel)]="password">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
+  </form>
+  <div class="footer">
+    <div *ngIf="failure" class="alert alert-danger">Email o Password incorrectos!</div>
+    <div *ngIf="isLoading | async">
+      <mat-progress-spinner color="primary" mode="indeterminate" [value]="0" [diameter]="40">
+      </mat-progress-spinner>
+    </div>
   </div>
 </div>
+
+
