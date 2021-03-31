@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { Incidencia } from './Incidencia';
 
 @Injectable({
@@ -41,6 +42,8 @@ export class LocalStorageService {
     incidencias.push(incidencia);
     localStorage.setItem('incidencias', JSON.stringify(incidencias));
     localStorage.setItem('incidenciaId', `${id + 1}`);
+
+    this.incidencias$.next(this.loadIncidencias());
   }
 
   changeState(incidencia: Incidencia) {
@@ -56,5 +59,11 @@ export class LocalStorageService {
       incidencias = JSON.parse(localStorage.getItem('incidencias')!!);
     }
     return incidencias;
+  }
+
+  private incidencias$ = new Subject<Incidencia[]>();
+
+  getIncidencias$(): Observable<Incidencia[]> {
+    return this.incidencias$.asObservable();
   }
 }

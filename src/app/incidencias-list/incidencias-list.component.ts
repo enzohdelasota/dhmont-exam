@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Categoria } from '../Categoria';
 import { CategoriaRepositoryService } from '../categoria-repository.service';
 import { Incidencia } from '../Incidencia';
@@ -17,18 +18,29 @@ export class IncidenciasListComponent implements OnInit {
   incidencias: Incidencia[] = [];
   categorias: Categoria[] = [];
 
+  incidencias$: Observable<Incidencia[]>;
+  subscription?: Subscription;
+
   constructor(
     private incidenciaRepository: IncidenciaRepositoryService,
     private categoriaRepository: CategoriaRepositoryService,
-    ) { }
+    ) {
+      this.incidencias$ = this.incidenciaRepository.getAll$();
+    }
 
   ngOnInit(): void {
     this.categorias = this.categoriaRepository.getAll();
     this.incidencias = this.incidenciaRepository.getAll();
+
+    this.subscription = this.incidencias$.subscribe(incidencias => this.incidencias = incidencias);
   }
 
   save(incidencia: Incidencia) {
     this.incidenciaRepository.changeState(incidencia);
+  }
+
+  ngOnDestroy() {
+    this.subscription?.unsubscribe();
   }
 
 }
