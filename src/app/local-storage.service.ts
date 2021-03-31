@@ -43,7 +43,7 @@ export class LocalStorageService {
     localStorage.setItem('incidencias', JSON.stringify(incidencias));
     localStorage.setItem('incidenciaId', `${id + 1}`);
 
-    this.incidencias$.next(this.loadIncidencias());
+    this.incidencias$.next(this.loadIncidenciasByUser(incidencia.user));
   }
 
   changeState(incidencia: Incidencia) {
@@ -59,6 +59,14 @@ export class LocalStorageService {
       incidencias = JSON.parse(localStorage.getItem('incidencias')!!);
     }
     return incidencias;
+  }
+
+  loadIncidenciasByUser(user: string): Incidencia[] {
+    let incidencias: Incidencia[] = [];
+    if (localStorage.getItem('incidencias')) {
+      incidencias = JSON.parse(localStorage.getItem('incidencias')!!);
+    }
+    return incidencias.filter(it => it.user === user);
   }
 
   private incidencias$ = new Subject<Incidencia[]>();

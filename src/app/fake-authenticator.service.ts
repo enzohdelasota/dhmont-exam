@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 const USERS = [
   { email: 'admin@example.com', password: 'admin', name: 'John Doe', role: 'admin' },
   { email: 'user@example.com', password: 'user', name: 'Juan Peréz', role: 'reporter' },
+  { email: 'user2@example.com', password: 'user2', name: 'Ivan Van Vasquez', role: 'reporter' },
 ]
 
 @Injectable({
