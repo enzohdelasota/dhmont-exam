@@ -1,4 +1,7 @@
 <div class="home">
-  <app-edit-incidencia class="item" *ngIf="isReporter()"></app-edit-incidencia>
-  <app-incidencias-list [class]="isReporter() ? 'item' : 'list'" [columns]="tableColumns"></app-incidencias-list>
+  <app-edit-incidencia class="item" *ngIf="isReporter() && !isMobile()"></app-edit-incidencia>
+  <app-incidencias-list [class]="isReporter() && !isMobile() ? 'item' : 'list'" [columns]="tableColumns"></app-incidencias-list>
+  <button *ngIf="isMobile()" mat-fab color="primary" class="fab-button" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>

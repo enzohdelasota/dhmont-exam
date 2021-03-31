@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../auth.service';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,7 @@ import { AuthService } from '../auth.service';
 export class HomeComponent implements OnInit {
   tableColumns: string[] = [];
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     if (this.authService.isReporter()) {
@@ -21,5 +23,18 @@ export class HomeComponent implements OnInit {
 
   isReporter(): Boolean {
     return this.authService.isReporter();
+  }
+
+  isMobile(): Boolean {
+    if (innerWidth < 800) {
+      return true;
+    }
+    return false;
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      width: '100%',
+    });
   }
 }
