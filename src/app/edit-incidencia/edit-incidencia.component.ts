@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Categoria } from '../Categoria';
 import { CategoriaRepositoryService } from '../categoria-repository.service';
@@ -12,6 +12,9 @@ import { States } from '../states.enum';
   styleUrls: ['./edit-incidencia.component.scss']
 })
 export class EditIncidenciaComponent implements OnInit {
+  @ViewChild('form') form?: ElementRef;
+  @ViewChild('focus') focus?: ElementRef;
+
   categorias?: Categoria[];
 
   incidencia: Incidencia = {
@@ -22,6 +25,8 @@ export class EditIncidenciaComponent implements OnInit {
     categoriaId: 0,
     state: States.init,
   };
+
+  badinputs = false;
 
   constructor(
     private incidenciaRepository: IncidenciaRepositoryService,
@@ -35,15 +40,22 @@ export class EditIncidenciaComponent implements OnInit {
   }
 
   save() {
-    this.incidenciaRepository.save(this.incidencia);
+    if(this.valideInputs()) {
+      this.incidenciaRepository.save(this.incidencia);
 
-    this.incidencia = {
-      id: 0,
-      description: '',
-      user: '',
-      photo_path: '',
-      categoriaId: 0,
-      state: States.init,
+      this.incidencia = {
+        id: 0,
+        description: '',
+        user: '',
+        photo_path: '',
+        categoriaId: 0,
+        state: States.init,
+      }
+
+      this.form?.nativeElement.reset();
+      this.focus?.nativeElement.focus();
+    } else {
+      this.badinputs = true;
     }
   }
 
@@ -56,6 +68,15 @@ export class EditIncidenciaComponent implements OnInit {
     });
 
     reader.readAsDataURL(file);
+  }
+
+  valideInputs(): Boolean {
+    if (this.incidencia.photo_path === '' ||
+    this.incidencia.description === '') {
+      return false;
+    } else {
+      return true;
+    }
   }
 
 }

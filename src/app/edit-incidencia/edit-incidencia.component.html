@@ -2,10 +2,10 @@
   <mat-card-header>
     <h2 class="mat-h2">Nueva incidencia</h2>
   </mat-card-header>
-  <form class="form">
+  <form class="form" #form>
     <mat-form-field>
       <mat-label>Descripción</mat-label>
-      <input matInput name="descripcion" placeholder="Descripción"  [(ngModel)]="incidencia.description">
+      <input #focus matInput name="descripcion" placeholder="Descripción"  [(ngModel)]="incidencia.description">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Categoría</mat-label>
@@ -23,5 +23,6 @@
       </div>
     </div>
     <button mat-raised-button color="primary" (click)="save()">Guardar</button>
+    <div *ngIf="badinputs" class="alert alert-danger">Revise los datos</div>
   </form>
 </mat-card>
