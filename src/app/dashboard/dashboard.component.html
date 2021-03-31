@@ -1,16 +1,17 @@
-<app-toolbar ></app-toolbar>
-<mat-sidenav-container>
-  <mat-sidenav mode="side" opened class="sidenav">
+<app-toolbar (toggleDrawer)="drawer.toggle()"></app-toolbar>
+<mat-drawer-container class="container">
+  <mat-drawer #drawer class="sidenav" mode="side">
     <mat-list>
       <mat-list-item>
-        <button mat-button [routerLink]="['/dashboard']" routerLinkActive="router-link-active">Inicio</button>
+        <button mat-button [routerLink]="['/dashboard']" routerLinkActive="router-link-active" (click)="drawer.toggle()">Inicio</button>
       </mat-list-item>
       <mat-list-item *ngIf="isAdmin()">
-        <button mat-button [routerLink]="['/dashboard/statics']" routerLinkActive="router-link-active" >Estadísticas</button>
+        <button mat-button [routerLink]="['/dashboard/statics']" routerLinkActive="router-link-active"  (click)="drawer.toggle()">Estadísticas</button>
       </mat-list-item>
     </mat-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
+  </mat-drawer>
+
+  <mat-drawer-content>
     <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,4 +1,5 @@
-<ngx-charts-bar-vertical
+<div #container>
+  <ngx-charts-bar-vertical
   [scheme]="colorScheme"
   [results]="data"
   [xAxis]="showXAxis"
@@ -7,6 +8,7 @@
   [showYAxisLabel]="showYAxisLabel"
   [xAxisLabel]="xAxisLabel"
   [yAxisLabel]="yAxisLabel"
-  [view]="view"
+  [view]="[container.offsetWidth, 450]"
   [yAxisTickFormatting]="axisFormat">
 </ngx-charts-bar-vertical>
+</div>

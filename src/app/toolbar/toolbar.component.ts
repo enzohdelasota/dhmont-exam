@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class ToolbarComponent implements OnInit {
   user: string = '';
+  @Output() toggleDrawer = new EventEmitter<boolean>();
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -19,6 +20,10 @@ export class ToolbarComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['login']);
+  }
+
+  toggle() {
+    this.toggleDrawer.emit(true);
   }
 
 }

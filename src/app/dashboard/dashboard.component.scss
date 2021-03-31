@@ -1,3 +1,20 @@
+.container {
+  height: 100%;
+}
+
 .sidenav {
   width: 20vw;
+  height: 100vw;
+}
+
+@media screen and (max-width: 1000px) {
+  .sidenav {
+    width: 30vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .sidenav {
+    width: 80vw;
+  }
 }

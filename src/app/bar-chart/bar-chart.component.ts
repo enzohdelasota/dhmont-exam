@@ -18,7 +18,6 @@ export class BarChartComponent implements OnInit {
   xAxisLabel = 'Categoría';
   showYAxisLabel = true;
   yAxisLabel = 'Incidencias';
-  view: [number, number] = [450, 300];
 
   colorScheme = {
     domain: ['#5AA454', '#C7B42C', '#A10A28']
