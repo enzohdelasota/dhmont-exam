@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { FakeAuthenticatorService } from './fake-authenticator.service';
 import { LocalStorageService } from './local-storage.service';
 
@@ -54,6 +55,25 @@ export class AuthService {
       return false;
     }
   }
+
+  success$ = new Subject<boolean>();
+
+  login$(email: string, password: string): Observable<boolean> {
+    this.fakeAuthenticator.login$(email, password).subscribe(
+      it => {
+        if (it) {
+          this.userEmail = it.email;
+          this.userName = it.name;
+          this.userRole = it.role;
+          this.localSourceData.saveUser(it);
+          this.success$.next(true)
+        } else {
+          this.success$.next(false)
+        }
+      }
+    );
+    return this.success$.asObservable();
+  };
 
   logout() {
     this.userEmail = '';

@@ -1,6 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { LoginLoaderService } from '../login-loader.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,14 @@ export class LoginComponent implements OnInit {
   password: string = '';
   failure = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  isLoading: Subject<boolean> = this.loaderService.isLoading;
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private loaderService: LoginLoaderService,
+    private zone: NgZone,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -24,15 +33,17 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    let success = this.authService.login(this.email, this.password);
-    if (success) {
-      this.router.navigate(['']);
-    } else {
-      this.failure = true;
-      this.email = '';
-      this.password = '';
-      this.focus?.nativeElement.focus();
-    }
+    this.failure = false;
+    this.authService.login$(this.email, this.password).subscribe(it => {
+      if (it) {
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.failure = true;
+        this.email = '';
+        this.password = '';
+        this.focus?.nativeElement.focus();
+      }
+    });
   }
 
 }

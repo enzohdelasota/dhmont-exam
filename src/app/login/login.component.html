@@ -9,5 +9,11 @@
     <input matInput name="password" placeholder="Password" type="password" [(ngModel)]="password">
   </mat-form-field>
   <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
-  <div *ngIf="failure" class="alert alert-danger">Email o Password incorrectos!</div>
 </form>
+<div class="footer">
+  <div *ngIf="failure" class="alert alert-danger">Email o Password incorrectos!</div>
+  <div *ngIf="isLoading | async">
+    <mat-progress-spinner color="primary" mode="indeterminate" [value]="0" [diameter]="40">
+    </mat-progress-spinner>
+  </div>
+</div>
