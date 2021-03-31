@@ -36,6 +36,15 @@ export class EditIncidenciaComponent implements OnInit {
 
   save() {
     this.incidenciaRepository.save(this.incidencia);
+
+    this.incidencia = {
+      id: 0,
+      description: '',
+      user: '',
+      photo_path: '',
+      categoriaId: 0,
+      state: States.init,
+    }
   }
 
   image(image: any) {

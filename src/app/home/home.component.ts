@@ -13,9 +13,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.isReporter()) {
-      this.tableColumns = ['id', 'description', 'category', 'state'];
+      this.tableColumns = ['id', 'description', 'category', 'state', 'image'];
     } else {
-      this.tableColumns = ['id', 'description', 'category', 'user', 'stateChange'];
+      this.tableColumns = ['id', 'description', 'category', 'user', 'stateChange', 'image'];
     }
   }
 
