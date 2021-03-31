@@ -8,13 +8,20 @@
       <input matInput name="descripcion" placeholder="Descripción"  [(ngModel)]="incidencia.description">
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Categoria</mat-label>
+      <mat-label>Categoría</mat-label>
       <mat-select name="categoriaid" [(ngModel)]="incidencia.categoriaId">
         <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
           {{categoria.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <div>
+      <mat-label>Imagen</mat-label>
+      <input #imageInput type="file" accept="image/*" (change)="image(imageInput)">
+      <div *ngIf="incidencia.photo_path" class="image">
+        <img class="image" src="{{incidencia.photo_path}}" >
+      </div>
+    </div>
     <button mat-raised-button color="primary" (click)="save()">Guardar</button>
   </form>
 </mat-card>

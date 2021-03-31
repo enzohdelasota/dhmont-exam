@@ -38,4 +38,15 @@ export class EditIncidenciaComponent implements OnInit {
     this.incidenciaRepository.save(this.incidencia);
   }
 
+  image(image: any) {
+    const file: File = image.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event) => {
+      this.incidencia.photo_path = event.target?.result as string;
+    });
+
+    reader.readAsDataURL(file);
+  }
+
 }
