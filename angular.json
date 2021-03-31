@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "dhmont-exam"
+  "defaultProject": "dhmont-exam",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

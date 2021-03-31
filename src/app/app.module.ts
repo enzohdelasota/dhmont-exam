@@ -15,6 +15,11 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { StaticsComponent } from './statics/statics.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
+import * as fromHome from './reducers/home.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { HomeEffects } from './effects/home.effects';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserAnimationsModule,
     MyMatModule,
     NgxChartsModule,
+    StoreModule.forRoot(reducers),
+    StoreModule.forFeature(fromHome.homeFeatureKey, fromHome.reducer),
+    //EffectsModule.forFeature([HomeEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
