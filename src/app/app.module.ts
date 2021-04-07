@@ -16,6 +16,7 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { StaticsComponent } from './statics/statics.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
     ToolbarComponent,
     BarChartComponent,
     EditDialogComponent,
+    InvoiceComponent,
   ],
   imports: [
     BrowserModule,

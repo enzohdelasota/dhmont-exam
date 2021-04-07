@@ -1,14 +1,17 @@
 <app-toolbar (toggleDrawer)="drawer.toggle()"></app-toolbar>
 <mat-drawer-container class="container">
-  <mat-drawer #drawer class="sidenav" mode="side">
-    <mat-list>
+  <mat-drawer #drawer class="sidenav" mode="push">
+    <mat-nav-list>
       <mat-list-item>
-        <button mat-button [routerLink]="['/dashboard']" routerLinkActive="router-link-active" (click)="drawer.toggle()">Inicio</button>
+        <a [routerLink]="['/dashboard']" (click)="drawer.toggle()">Inicio</a>
       </mat-list-item>
       <mat-list-item *ngIf="isAdmin()">
-        <button mat-button [routerLink]="['/dashboard/statics']" routerLinkActive="router-link-active"  (click)="drawer.toggle()">Estadísticas</button>
+        <a [routerLink]="['/dashboard/statics']" (click)="drawer.toggle()">Estadísticas</a>
       </mat-list-item>
-    </mat-list>
+      <mat-list-item *ngIf="isAdmin()">
+        <a [routerLink]="['/dashboard/invoice']" (click)="drawer.toggle()">Invoice</a>
+      </mat-list-item>
+    </mat-nav-list>
   </mat-drawer>
 
   <mat-drawer-content>

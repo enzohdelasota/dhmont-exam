@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 import { IsAdminGuard } from './is-admin.guard';
 import { IsLoginGuard } from './is-login.guard';
 import { LoginComponent } from './login/login.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'statics', component: StaticsComponent, canActivate: [IsAdminGuard] },
+      { path: 'invoice', component: InvoiceComponent, canActivate: [IsAdminGuard] },
     ]
   },
   { path: 'login', component: LoginComponent },
