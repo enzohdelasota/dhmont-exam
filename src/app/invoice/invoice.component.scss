@@ -45,6 +45,10 @@ th, td {
   border-bottom: solid #e4e4e4 1px;
 }
 
+.title {
+  display: none;
+}
+
 
 
 .footer {
@@ -95,4 +99,56 @@ div.total span {
   &:nth-child(2n + 1) {
     text-align: right;
   }
+}
+
+@media screen and (max-width: 800px) {
+
+  .title {
+    display: inline;
+    font-weight: bolder;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .row {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  td.row span:first-child {
+    flex: 1 1 200px;
+  }
+
+  td.row p:nth-child(2n) {
+    flex: 1 1 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  th, td {
+    border-bottom: none;
+  }
+
+  tr {
+    border-bottom: solid grey 1px;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+
+  .total {
+    width: 100%;
+  }
+
+  .bank {
+    width: 100%;
+  }
+
 }
